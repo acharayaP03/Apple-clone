@@ -1,5 +1,5 @@
 import Hero from "./components/Hero";
-import Highlights from "./components/Highlights";
+import { Highlights } from "./components/HighlightSection";
 import Navbar from "./components/Navbar";
 
 export default function App() {
