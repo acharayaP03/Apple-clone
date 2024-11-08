@@ -78,6 +78,11 @@ export default function Model3D() {
             <View.Port />
           </Canvas>
         </div>
+        <div className="mx-auto w-full">
+          <p className="text-sm text-center text-gray-400 mb-5">
+            {model.title}
+          </p>
+        </div>
       </div>
     </section>
   );
