@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 export default function VideoCarouselSlider({
   videoRef,
   videoDivRef,
@@ -6,13 +6,13 @@ export default function VideoCarouselSlider({
 }) {
   return (
     <>
-      <div className="flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full">
+      <div className="flex-center rounded-full bg-gray-300 px-7 py-5 backdrop-blur">
         {videoRef &&
           videoRef.current.map((_, index) => (
             <span
               key={index}
               ref={(el) => (videoDivRef.current[index] = el)}
-              className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
+              className="relative mx-2 h-3 w-3 cursor-pointer rounded-full bg-gray-200"
             >
               <span
                 className="absolute h-full w-full rounded-full"
