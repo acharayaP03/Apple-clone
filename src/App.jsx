@@ -1,7 +1,8 @@
-import Hero from "./components/Hero";
-import { Highlights } from "./components/HighlightSection";
-import Navbar from "./components/Navbar";
-import Model3D from "./features/3DModel/Model3D";
+import Hero from './components/Hero';
+import { Highlights } from './components/HighlightSection';
+import Navbar from './components/Navbar';
+
+import { Model3D, WhatsNew } from './features';
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Hero />
       <Highlights />
       <Model3D />
+      <WhatsNew />
     </main>
   );
 }
