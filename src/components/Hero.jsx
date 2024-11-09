@@ -1,33 +1,33 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
-import { heroVideo, smallHeroVideo } from "../utils";
-import { useState } from "react";
-import { useEffect } from "react";
+import { heroVideo, smallHeroVideo } from '../utils';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function Hero() {
   const [videoSrc, setVideoSrc] = useState(
-    window.innerWidth > 768 ? heroVideo : smallHeroVideo
+    window.innerWidth > 768 ? heroVideo : smallHeroVideo,
   );
   useGSAP(() => {
-    gsap.to(".hero-title", {
+    gsap.to('.hero-title', {
       duration: 2,
       delay: 2,
       opacity: 1,
       y: 0,
-      ease: "power4.inOut",
+      ease: 'power4.inOut',
     });
 
     gsap.to(
-      "#cta",
+      '#cta',
       {
         duration: 2,
         delay: 2,
         opacity: 1,
         y: -50,
-        ease: "power4.inOut",
+        ease: 'power4.inOut',
       },
-      []
+      [],
     );
   }, []);
 
@@ -40,15 +40,15 @@ export default function Hero() {
   }
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <section className="w-full nav-height bg-black relative">
-      <div className="h-5/6 w-full flex-center flex-col">
+    <section className="nav-height relative w-full bg-black">
+      <div className="flex-center h-5/6 w-full flex-col">
         <p className="hero-title"> iPhone 16 pro</p>
-        <div className="md:w-10/12 w-9/12">
+        <div className="w-9/12 md:w-10/12">
           <video
             autoPlay={true}
             muted
@@ -63,7 +63,7 @@ export default function Hero() {
 
       <div
         id="cta"
-        className="flex flex-col items-center opacity-0 translate-y-20"
+        className="flex translate-y-20 flex-col items-center opacity-0"
       >
         <a href="#highlights" className="btn">
           Buy now
