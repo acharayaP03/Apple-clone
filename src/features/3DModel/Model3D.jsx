@@ -1,16 +1,17 @@
-import { useState, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import * as THREE from "three";
+import { useState, useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import * as THREE from 'three';
 
-import Model3DView from "./Model3DView";
-import { yellowImg } from "../../utils";
-import { Canvas } from "@react-three/fiber";
-import { View } from "@react-three/drei";
+import Model3DView from './Model3DView';
+import { yellowImg } from '../../utils';
+import { Canvas } from '@react-three/fiber';
+import { View } from '@react-three/drei';
+import { models, sizes } from '../../constants';
 
 const initialState = {
-  title: "iPhone 16 pro in Natural Titanium",
-  color: ["#8f8a81", "#FFE7B9", "#6F6C64"],
+  title: 'iPhone 16 pro in Natural Titanium',
+  color: ['#8f8a81', '#FFE7B9', '#6F6C64'],
   img: yellowImg,
 };
 
@@ -31,14 +32,14 @@ export default function Model3D() {
   const [largeRotation, setLargeRotation] = useState(0);
   useGSAP(() => {
     gsap.to(
-      "#heading",
+      '#heading',
       {
         y: 0,
         duration: 1,
         delay: 1.5,
         opacity: 1,
       },
-      []
+      [],
     );
   });
   return (
@@ -48,8 +49,8 @@ export default function Model3D() {
           Take a closer look.
         </h1>
 
-        <div className="flex flex-col items-center mt-5">
-          <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
+        <div className="mt-5 flex flex-col items-center">
+          <div className="relative h-[75vh] w-full overflow-hidden md:h-[90vh]">
             <Model3DView
               index={1}
               groupRef={small}
@@ -71,17 +72,45 @@ export default function Model3D() {
           </div>
 
           <Canvas
-            className="w-full h-full"
-            style={{ position: "fixed", inset: 0, overflow: "hidden" }}
-            eventSource={document.getElementById("root")}
+            className="h-full w-full"
+            style={{ position: 'fixed', inset: 0, overflow: 'hidden' }}
+            eventSource={document.getElementById('root')}
           >
             <View.Port />
           </Canvas>
         </div>
         <div className="mx-auto w-full">
-          <p className="text-sm text-center text-gray-400 mb-5">
+          <p className="mb-5 text-center text-sm text-gray-400">
             {model.title}
           </p>
+          <div className="flex-center">
+            <ul className="color-container">
+              {models.map((item, index) => (
+                <li
+                  key={index}
+                  className="mx-4 h-6 w-6 cursor-pointer rounded-full"
+                  style={{ backgroundColor: item.color[0] }}
+                  onClick={() => setModel(item)}
+                ></li>
+              ))}
+            </ul>
+
+            <button className="size-btn-container">
+              {sizes.map(({ label, value }) => (
+                <span
+                  className="size-btn"
+                  key={label}
+                  style={{
+                    backgroundColor: size === value ? 'white' : 'transparent',
+                    color: size === value ? 'black' : 'white',
+                  }}
+                  onClick={() => setSize(value)}
+                >
+                  {label}
+                </span>
+              ))}
+            </button>
+          </div>
         </div>
       </div>
     </section>
