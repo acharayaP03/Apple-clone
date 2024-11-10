@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger); // its necessary to register ScrollTrigger plugin for scroll animations to
 
-export function animaateWithGsap(target, animationProps, scrollProps) {
+export function animateWithGsap(target, animationProps, scrollProps) {
   return gsap.to(target, {
     ...animationProps,
     scrollTrigger: {

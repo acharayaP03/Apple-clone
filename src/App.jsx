@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import { Highlights } from './components/HighlightSection';
+import HowItWorks from '@/features/HowItWorks/HowItWorks.jsx';
 import Navbar from './components/Navbar';
 
 import { Model3D, WhatsNew } from './features';
@@ -12,6 +13,7 @@ export default function App() {
       <Highlights />
       <Model3D />
       <WhatsNew />
+      <HowItWorks />
     </main>
   );
 }
