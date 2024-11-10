@@ -1,14 +1,15 @@
-import { chipImg, frameImg } from '@/utils/index.js';
+import { chipImg, frameImg, frameVideo } from '@/utils/index.js';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger} from 'gsap/all';
 import framemv from '/assets/videos/frame.mp4';
+import { useRef } from 'react';
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HowItWorks() {
-
+  const videoRef = useRef();
   useGSAP(() => {
     gsap.from('#chip', {
       scrollTrigger: {
@@ -39,7 +40,15 @@ export default function HowItWorks() {
           <div className="overflow-hidden">
             <img src={frameImg} alt="frame" className="bg-transparent relative z-10"/>
           </div>
+          <div className="hiw-video">
+            <video className="pointer-events-none" playsInline preload="none" muted autoPlay ref={videoRef}>
+              <source src={frameVideo} type="video/mp4"/>
+            </video>
+          </div>
         </div>
+        <p className="text-gray font-semibold text-center mt-3">
+          Honkai: Star Rail
+        </p>
       </div>
     </section>
   )
