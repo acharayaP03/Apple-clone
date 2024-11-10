@@ -1,7 +1,8 @@
-import { chipImg } from '@/utils/index.js';
+import { chipImg, frameImg } from '@/utils/index.js';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger} from 'gsap/all';
+import framemv from '/assets/videos/frame.mp4';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,6 +32,14 @@ export default function HowItWorks() {
           <br/> A monster win for gaming.
         </div>
         <p className="hiw-subtitle"> It's here. The biggest redesign in the history of Apple GPUs. </p>
+      </div>
+
+      <div className="mt-10 md:mt-20 mb-14">
+        <div className="relative h-full flex-center">
+          <div className="overflow-hidden">
+            <img src={frameImg} alt="frame" className="bg-transparent relative z-10"/>
+          </div>
+        </div>
       </div>
     </section>
   )
