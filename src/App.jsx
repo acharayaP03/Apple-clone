@@ -2,6 +2,7 @@ import Hero from './components/Hero';
 import { Highlights } from './components/HighlightSection';
 import HowItWorks from '@/features/HowItWorks/HowItWorks.jsx';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 import { Model3D, WhatsNew } from './features';
 
@@ -14,6 +15,7 @@ export default function App() {
       <Model3D />
       <WhatsNew />
       <HowItWorks />
+      <Footer />
     </main>
   );
 }
