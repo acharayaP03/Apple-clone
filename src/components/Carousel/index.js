@@ -1,2 +1,2 @@
-export { default as SlideContainer } from "./SlideContainer";
-export { default as SlideItemText } from "./SlideItemText";
+export { default as VideoCarousel } from './VideoCarousel';
+export { default as VideoCarouselItem } from './VideoCarouselItem';
