@@ -1,2 +1,2 @@
 export { default as VideoCarousel } from './VideoCarousel';
-export { default as VideoCarouselItem } from './VideoCarouselItem';
+export { default as VideoCarouselSlider } from './VideoCarouselSlider';
