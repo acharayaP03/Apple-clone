@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 
-import { animaateWithGsap } from '../../utils/animations';
+import { animateWithGsap } from '../../utils/animations';
 import { explore1Img, explore2Img, exploreVideo } from '../../utils';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,13 +22,13 @@ export default function WhatsNew() {
       },
     });
 
-    animaateWithGsap('#features_title', {
+    animateWithGsap('#features_title', {
       y: 0,
       opacity: 1,
       duration: 1,
     });
 
-    animaateWithGsap(
+    animateWithGsap(
       '.g_grow',
       {
         scale: 1,
@@ -38,7 +38,7 @@ export default function WhatsNew() {
       { scrub: 5.5 },
     );
 
-    animaateWithGsap('.g_text', {
+    animateWithGsap('.g_text', {
       y: 0,
       opacity: 1,
       ease: 'power2inOut',
