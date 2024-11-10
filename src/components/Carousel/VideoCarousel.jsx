@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import VideoCarouselSlider from './VideoCarouselSlider';
-import SlideItemText from '../Carousel/SlideItemText';
+import SlideItemText from '../Slider/SlideItemText';
 
 gsap.registerPlugin(ScrollTrigger);
 

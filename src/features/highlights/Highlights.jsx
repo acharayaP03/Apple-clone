@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 import { rightImg, watchImg } from '../../utils';
 
-import VideoCarousel from './VideoCarousel';
+import { VideoCarousel } from '../../components/Carousel';
 
 export default function Highlights() {
   useGSAP(() => {
