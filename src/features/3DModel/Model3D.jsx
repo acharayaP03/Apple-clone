@@ -1,6 +1,4 @@
 import { useState, useRef } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
@@ -33,18 +31,7 @@ export default function Model3D() {
   // track the current model
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
-  useGSAP(() => {
-    gsap.to(
-      '#heading',
-      {
-        y: 0,
-        duration: 1,
-        delay: 1.5,
-        opacity: 1,
-      },
-      [],
-    );
-  });
+
   return (
     <section className="common-padding">
       <div className="screen-max-width">
@@ -56,19 +43,19 @@ export default function Model3D() {
               groupRef={small}
               gsapType="view1"
               controlRef={cameraControlSmall}
-              setLargeRotation={setSmallRotation}
+              setRotation={setSmallRotation}
               item={model}
               size={size}
             />
-            <Model3DView
+            {/* <Model3DView
               index={2}
               groupRef={large}
               gsapType="view1"
               controlRef={cameraControllLarge}
-              setLargeRotation={setLargeRotation}
+              setRotation={setLargeRotation}
               item={model}
               size={size}
-            />
+            /> */}
           </div>
 
           <Canvas
