@@ -27,7 +27,7 @@ export default function Model3DView({
       <View
         index={index}
         id={gsapType}
-        className={`h-full w-full cursor-pointer ${index === 2 ? 'right-[-100%]' : ''}`}
+        className={`h-full w-full cursor-grab ${index === 2 ? 'right-[-100%]' : ''}`}
       >
         {/* Ambient light */}
         <ambientLight intensity={0.3} />
