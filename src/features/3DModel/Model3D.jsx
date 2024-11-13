@@ -2,12 +2,15 @@ import { useState, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import * as THREE from 'three';
-
-import Model3DView from './Model3DView';
-import { yellowImg } from '../../utils';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
+
+import { yellowImg } from '../../utils';
 import { models, sizes } from '../../constants';
+
+import Model3DView from './Model3DView';
+import { Button, SectionHeading } from '../../components/ui';
+import ModelColorPicker from './ModelColorPicker';
 
 const initialState = {
   title: 'iPhone 16 pro in Natural Titanium',
@@ -45,10 +48,7 @@ export default function Model3D() {
   return (
     <section className="common-padding">
       <div className="screen-max-width">
-        <h1 id="heading" className="section-heading">
-          Take a closer look.
-        </h1>
-
+        <SectionHeading text="Take a closer look." id="heading" />
         <div className="mt-5 flex flex-col items-center">
           <div className="relative h-[75vh] w-full overflow-hidden md:h-[90vh]">
             <Model3DView
@@ -86,16 +86,16 @@ export default function Model3D() {
           <div className="flex-center">
             <ul className="color-container">
               {models.map((item, index) => (
-                <li
+                <ModelColorPicker
                   key={index}
-                  className="mx-4 h-6 w-6 cursor-pointer rounded-full"
-                  style={{ backgroundColor: item.color[0] }}
-                  onClick={() => setModel(item)}
-                ></li>
+                  item={item}
+                  index={index}
+                  setModel={setModel}
+                />
               ))}
             </ul>
 
-            <button className="size-btn-container">
+            <Button className="size-btn-container">
               {sizes.map(({ label, value }) => (
                 <span
                   className="size-btn"
@@ -109,7 +109,7 @@ export default function Model3D() {
                   {label}
                 </span>
               ))}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
