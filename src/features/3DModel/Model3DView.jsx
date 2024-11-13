@@ -1,7 +1,12 @@
 import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
-import { View, PerspectiveCamera, OrbitControls } from '@react-three/drei';
+import {
+  View,
+  PerspectiveCamera,
+  OrbitControls,
+  Text,
+} from '@react-three/drei';
 
 import Lights from './Lights';
 import Iphone3DModel from './Iphone3DModel';
@@ -43,7 +48,7 @@ export default function Model3DView({
         name={`${index === 1} ? 'small' : 'large'`}
         position={[0, 0, 0]}
       >
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Text>Loading...</Text>}>
           <Iphone3DModel
             scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
             item={item}
@@ -60,7 +65,7 @@ Model3DView.propTypes = {
   groupRef: PropTypes.object.isRequired,
   gsapType: PropTypes.string.isRequired,
   controlRef: PropTypes.object.isRequired,
-  setLargeRotation: PropTypes.func.isRequired,
+  setRotation: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired,
   size: PropTypes.number.isRequired,
 };
