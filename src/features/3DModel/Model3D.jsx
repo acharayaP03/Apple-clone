@@ -1,9 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import gsap from 'gsap';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
 
 import { yellowImg } from '../../utils';
+import { animationWithGsapTimeline } from '../../utils/animations';
 import { models, sizes } from '../../constants';
 
 import Model3DView from './Model3DView';
@@ -17,7 +19,7 @@ const initialState = {
 };
 
 export default function Model3D() {
-  const [size, setSize] = useState(0);
+  const [size, setSize] = useState('small');
   const [model, setModel] = useState(initialState);
 
   // camera control for model view
@@ -31,6 +33,38 @@ export default function Model3D() {
   // track the current model
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
+
+  const gsapTimeline = gsap.timeline();
+
+  useEffect(() => {
+    if (size === 'large') {
+      animationWithGsapTimeline(
+        gsapTimeline,
+        small,
+        smallRotation,
+        '#view1',
+        '#view2',
+        {
+          transform: 'translateX(-100%)',
+          duration: 2,
+        },
+      );
+    }
+
+    if (size === 'small') {
+      animationWithGsapTimeline(
+        gsapTimeline,
+        large,
+        largeRotation,
+        '#view2',
+        '#view1',
+        {
+          transform: 'translateX(0)',
+          duration: 2,
+        },
+      );
+    }
+  }, [size]);
 
   return (
     <section className="common-padding">
@@ -47,15 +81,15 @@ export default function Model3D() {
               item={model}
               size={size}
             />
-            {/* <Model3DView
+            <Model3DView
               index={2}
               groupRef={large}
-              gsapType="view1"
+              gsapType="view2"
               controlRef={cameraControllLarge}
               setRotation={setLargeRotation}
               item={model}
               size={size}
-            /> */}
+            />
           </div>
 
           <Canvas
@@ -91,7 +125,9 @@ export default function Model3D() {
                     backgroundColor: size === value ? 'white' : 'transparent',
                     color: size === value ? 'black' : 'white',
                   }}
-                  onClick={() => setSize(value)}
+                  onClick={() => {
+                    setSize(value);
+                  }}
                 >
                   {label}
                 </span>
