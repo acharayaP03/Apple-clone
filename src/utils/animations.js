@@ -20,3 +20,36 @@ export function animateWithGsap(target, animationProps, scrollProps) {
     },
   });
 }
+
+export function animationWithGsapTimeline(
+  timeline,
+  rotationRef,
+  rotationState,
+  firstTarget,
+  secondTarget,
+  animationProps,
+) {
+  timeline.to(rotationRef.current.rotation, {
+    y: rotationState,
+    duration: 1,
+    ease: 'power2.inOut',
+  });
+
+  timeline.to(
+    firstTarget,
+    {
+      ...animationProps,
+      ease: 'power2.inOut',
+    },
+    '<',
+  ); // '<' is used to start the animation at the same time as the previous animation
+
+  timeline.to(
+    secondTarget,
+    {
+      ...animationProps,
+      ease: 'power2.inOut',
+    },
+    '<',
+  );
+}
